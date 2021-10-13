@@ -27,6 +27,8 @@ module.exports = {
             filename: "remoteEntry.js",
             exposes: {
                 "./Button": "./src/components/Button.js",
+                "./react": "react",
+                "./react-dom": "react-dom",
             },
         }),
         new HtmlWebpackPlugin({
