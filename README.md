@@ -1,2 +1,2 @@
 # wmf-remote
-webpack module federation test - host
+webpack module federation test - remote
