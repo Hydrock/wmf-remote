@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Button from './Button';
+
 import '../styles/App.css';
 
 class App extends Component {
@@ -7,6 +9,7 @@ class App extends Component {
         return (
             <div>
                 <h1>My React App! (Remote)</h1>
+                <Button />
             </div>
         );
     }
