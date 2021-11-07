@@ -2,6 +2,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
+const deps = require("./package.json").dependencies;
+
 module.exports = {
     entry: "./src/index.js",
     output: {
@@ -26,10 +28,20 @@ module.exports = {
             name: 'remoteApp',
             filename: "remoteEntry.js",
             exposes: {
-                "./Button": "./src/components/Button.js",
-                "./react": "react",
-                "./react-dom": "react-dom",
+                "./RemoteComponent": "./src/components/RemoteComponent.js",
             },
+            shared: {
+                react: {
+                    eager: true,
+                    singleton: true,
+                    requiredVersion: deps.react,
+                },
+                "react-dom": {
+                    eager: true,
+                    singleton: true,
+                    requiredVersion: deps["react-dom"],
+                },
+            }
         }),
         new HtmlWebpackPlugin({
             template: "./src/index.html"
