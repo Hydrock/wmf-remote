@@ -2,8 +2,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-const deps = require("./package.json").dependencies;
-
 module.exports = {
     entry: "./src/index.js",
     output: {
@@ -34,12 +32,10 @@ module.exports = {
                 react: {
                     eager: true,
                     singleton: true,
-                    requiredVersion: deps.react,
                 },
                 "react-dom": {
                     eager: true,
                     singleton: true,
-                    requiredVersion: deps["react-dom"],
                 },
             }
         }),
